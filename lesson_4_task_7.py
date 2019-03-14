@@ -1,7 +1,5 @@
 import pytest
 from selenium import webdriver
-from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 
 @pytest.fixture
 def driver(request):
@@ -23,9 +21,9 @@ def test_example(driver):
         assert(driver.find_elements_by_css_selector("h1"))
         elems = driver.find_elements_by_css_selector('[id="app-"]')
         in_elems = elems[i].find_elements_by_css_selector("li")
-        if in_elems:
-            for y in range (len(in_elems)):
-                elems = driver.find_elements_by_css_selector('[id="app-"]')
-                in_elems1 = elems[i].find_elements_by_css_selector("li")
-                in_elems1[y].click()
-                assert (driver.find_elements_by_css_selector("h1"))
+
+        for y in range (len(in_elems)):
+            elems = driver.find_elements_by_css_selector('[id="app-"]')
+            in_elems1 = elems[i].find_elements_by_css_selector("li")
+            in_elems1[y].click()
+            assert (driver.find_elements_by_css_selector("h1"))
