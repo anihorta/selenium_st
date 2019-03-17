@@ -15,7 +15,7 @@ def driver(request):
     return wd
 
 
-def test_example(driver):
+def test_countries(driver):
     driver.get("http://localhost/litecart/admin/?app=countries&doc=countries")
     login(driver)
 
@@ -41,3 +41,22 @@ def test_example(driver):
             driver.back()
 
     assert elems_text == sorted(elems_text)
+
+
+def test_geozones(driver):
+    driver.get('http://localhost/litecart/admin/?app=geo_zones&doc=geo_zones')
+    login(driver)
+
+    first_list = driver.find_elements_by_css_selector('[class=row]')
+
+    for i in range(len(first_list)):
+        elems = driver.find_elements_by_css_selector('[class=row]')
+        elems[i].find_element_by_css_selector('a').click()
+
+        inner_elems = driver.find_elements_by_xpath('//*[@id="table-zones"]//tr[2]//td[3]//*[@value]')
+        textes = []
+        for inn in inner_elems:
+            textes.append(inn.text)
+        assert textes == sorted(textes)
+
+        driver.back()
