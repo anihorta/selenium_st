@@ -10,6 +10,6 @@ def driver(request):
 def test_example(driver):
     driver.get("http://localhost/litecart")
 
-    elems = driver.find_elements_by_css_selector('li>[title*="Duck"][class="link"]')
+    elems = driver.find_elements_by_css_selector('[class*="product column"]')
     for elem in elems:
         assert (elem.find_elements_by_css_selector('[class*="sticker"]'))
