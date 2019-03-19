@@ -11,6 +11,3 @@ def driver(request):
 
 def test_example(driver):
     driver.get("https://google.com")
-
-
-
