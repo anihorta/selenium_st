@@ -53,10 +53,9 @@ def test_geozones(driver):
         elems = driver.find_elements_by_css_selector('[class=row]')
         elems[i].find_element_by_css_selector('a').click()
 
-        inner_elems = driver.find_elements_by_xpath('//*[@id="table-zones"]//tr[2]//td[3]//*[@value]')
+        inner_elems = driver.find_elements_by_css_selector('[id *= "table-zones"] td:nth-child(3) [selected]')
         textes = []
         for inn in inner_elems:
             textes.append(inn.text)
         assert textes == sorted(textes)
-
         driver.back()
