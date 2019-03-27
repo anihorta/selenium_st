@@ -4,9 +4,9 @@ from selenium import webdriver
 
 @pytest.fixture
 def driver(request):
-    # wd = webdriver.Chrome()
+    wd = webdriver.Chrome()
     # wd = webdriver.Firefox()
-    wd = webdriver.Ie()
+    # wd = webdriver.Ie()
     wd.get("http://localhost/litecart")
 
     request.addfinalizer(wd.quit)
